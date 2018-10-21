@@ -1,18 +1,15 @@
 # NESPAL
 Python NES .PAL assembler
 
-#########################################################
-# NES Palette Pal - a .PAL generator for NES
-#
-# (c) 2018 Ben Ferguson
-#
-# Use Python 3!
-# 
-# Assembles a proper 32-byte palette file 
-# for use with NES-based 6502 compilers.
-# Easy point-and-click interface.
-# Output is always 'output.pal' in the root folder.
-##########################################################
+ NES Palette Pal - a .PAL generator for NES
+
+ (c) 2018 Ben Ferguson
+
+ Use Python 3!
+ 
+ Assembles a proper 32-byte palette file 
+ for use with NES-based 6502 compilers.
+ Easy point-and-click interface.
 
 Usage is super easy.
 Uses only tkinter library, so it should work on any Python3 compatible system.
