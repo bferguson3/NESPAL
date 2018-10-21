@@ -11,7 +11,6 @@
 # Output is always 'output.pal' in the root folder.
 ##########################################################
 
-
 nesPalette = [
 '#7C7C7C','#0000FC','#0000BC','#4428BC','#940084','#A80020','#A81000','#881400',
 '#503000','#007800','#006800','#005800','#004058','#000000','#000000','#000000',
@@ -122,7 +121,7 @@ while y < 4:
 win = tk.Frame(master=app, width=600, height=400)
 win.grid(row=0, columnspan=16)
 
-univ_lbl = tk.Label(win, text="$3f00\nUniversal BG Color:")
+univ_lbl = tk.Label(win, text="$3f00\nBG Color 0 (trans):")
 univ_lbl.grid(row=0, column=0)
 bg_lbls = tk.Label(win, text="$3f01-03\nBG Palette 0:")
 bg_lbls.grid(row=1, column=0)
@@ -244,13 +243,13 @@ def write_pal():
     while y < 3:
         output_bytes.append(sp_pal3[y].myVal)
         y += 1
-    output_bytes.insert(4,0)
-    output_bytes.insert(8,0)
-    output_bytes.insert(12,0)
-    output_bytes.insert(16,0)
-    output_bytes.insert(20,0)
-    output_bytes.insert(24,0)
-    output_bytes.insert(28,0)
+    output_bytes.insert(4,univ_bg.myVal)
+    output_bytes.insert(8,univ_bg.myVal)
+    output_bytes.insert(12,univ_bg.myVal)
+    output_bytes.insert(16,univ_bg.myVal)
+    output_bytes.insert(20,univ_bg.myVal)
+    output_bytes.insert(24,univ_bg.myVal)
+    output_bytes.insert(28,univ_bg.myVal)
 
     output = bytearray(output_bytes)
     f = open('output.pal', 'wb')
