@@ -1,5 +1,6 @@
 # NESPAL
 Python NES .PAL assembler
+![alt text](https://github.com/bferguson3/NESPAL/blob/master/nespal.png)
 
  NES Palette Pal - a .PAL generator for NES
 
@@ -18,5 +19,7 @@ $ python3 nespal.py
 
 Click the color you want, then click the palette number to assign it.
 When you're done, click the Save PAL file button, and 'output.pal' file will be created in the same folder in which you ran the pyton script. 
+
+(The unused spaces in the PPU palette block stored in $3f04 etc. are filled in with zero-bytes.)
 
 Enjoy!
