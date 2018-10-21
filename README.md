@@ -22,4 +22,16 @@ When you're done, click the Save PAL file button, and 'output.pal' file will be 
 
 (The unused spaces in the PPU palette block stored in $3f04 etc. are filled in with duplicates of $3f00.)
 
+Example usage:
+`       ldx #0
+pal_loop:
+        lda PalData,x
+        sta $2007
+        inx 
+        cpx #32
+        bne pal_loop
+        
+PalData:
+        .incbin "output.pal"`
+
 Enjoy!
