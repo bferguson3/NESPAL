@@ -1,5 +1,6 @@
 # NESPAL
 Python NES .PAL assembler
+![alt text](https://github.com/bferguson3/NESPAL/blob/master/nespal.png)
 
  NES Palette Pal - a .PAL generator for NES
 
