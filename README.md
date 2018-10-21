@@ -23,7 +23,11 @@ When you're done, click the Save PAL file button, and 'output.pal' file will be 
 (The unused spaces in the PPU palette block stored in $3f04 etc. are filled in with duplicates of $3f00.)
 
 Example usage:
-```       
+```     
+        lda #$3f
+        sta $2006
+        lda #$00
+        sta $2006     ; set PPU write address to $3f00
         ldx #0
 pal_loop:
         lda PalData,x
