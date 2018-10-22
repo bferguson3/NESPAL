@@ -11,7 +11,7 @@
 # Both of these files can be loaded directly into RAM
 # using your favorite NES assembler!
 #######################################################
-
+ 
 bytes_read = [] 
 
 with open("input.set", "rb") as f:
