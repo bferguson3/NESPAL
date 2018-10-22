@@ -252,9 +252,47 @@ def write_pal():
     output_bytes.insert(28,univ_bg.myVal)
 
     output = bytearray(output_bytes)
-    f = open('output.pal', 'wb')
-    f.write(output)
-    f.close()
+    try:
+        f = open('output.pal', 'wb')
+        f.write(output)
+        f.close()
+        print("Saved current palette to 'output.pal'.")
+    except Exception:
+        print("Failed to write")
+
+try: 
+    fh = open('output.pal', 'rb')
+except FileNotFoundError:
+    print("File not found. Are you running nespal.py from the right folder?")
+
+if fh:
+    print("output.pal file found. Loading...")
+    inbytes = bytearray(fh.read())
+    fh.close()
+    univ_bg.myVal = inbytes[0]
+    univ_bg.config(background=nesPalette[univ_bg.myVal])
+    c = 0
+    while c < 3:
+        bg_pal[c].myVal = inbytes[1+c]
+        bg_pal[c].config(background=nesPalette[bg_pal[c].myVal])
+        bg_pal2[c].myVal = inbytes[5+c]
+        bg_pal2[c].config(background=nesPalette[bg_pal2[c].myVal])
+        bg_pal3[c].myVal = inbytes[9+c]
+        bg_pal3[c].config(background=nesPalette[bg_pal3[c].myVal])
+        bg_pal4[c].myVal = inbytes[13+c]
+        bg_pal4[c].config(background=nesPalette[bg_pal4[c].myVal])
+        sp_pal0[c].myVal = inbytes[17+c]
+        sp_pal0[c].config(background=nesPalette[sp_pal0[c].myVal])
+        sp_pal1[c].myVal = inbytes[21+c]
+        sp_pal1[c].config(background=nesPalette[sp_pal1[c].myVal])
+        sp_pal2[c].myVal = inbytes[25+c]
+        sp_pal2[c].config(background=nesPalette[sp_pal2[c].myVal])
+        sp_pal3[c].myVal = inbytes[29+c]
+        sp_pal3[c].config(background=nesPalette[sp_pal3[c].myVal])
+        c += 1
+else:
+    print("No output.pal file found. Creating temporary palette.")
+
 
 save_btn = tk.Button(win, text='Save PAL file', command=write_pal)
 save_btn.grid(row=2, column=9)
