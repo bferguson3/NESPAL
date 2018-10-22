@@ -6,12 +6,11 @@ A set of Python tools for NES Assembly
    960-byte .NAM (nametable) and 
    64-byte .ATR (attribute)
 
-![alt text](https://github.com/bferguson3/NESPAL/blob/master/nespal.png)
 
 # NES Palette Pal - a .PAL generator for NES
+![alt text](https://github.com/bferguson3/NESPAL/blob/master/nespal.png)
 
  (c) 2018 Ben Ferguson
-
  Use Python 3!
  
  Assembles a proper 32-byte palette file 
