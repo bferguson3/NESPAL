@@ -2,7 +2,7 @@
 # NES PAL Tool for Python 3- (c) 2018 Ben Ferguson
 # SET to PPU Converter
 #
-# Usage: $ python3 (link: http://settoppu.py) settoppu.py
+# Usage: $ python3 settoppu.py
 #
 # Takes one file: INPUT.SET (saved from YY-CHR)
 # Outputs two files: OUTPUT.NAM (1kB namespace file)
