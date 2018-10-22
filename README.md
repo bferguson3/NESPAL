@@ -20,6 +20,24 @@ $ python3 nespal.py
 Click the color you want, then click the palette number to assign it.
 When you're done, click the Save PAL file button, and 'output.pal' file will be created in the same folder in which you ran the pyton script. 
 
-(The unused spaces in the PPU palette block stored in $3f04 etc. are filled in with zero-bytes.)
+(The unused spaces in the PPU palette block stored in $3f04 etc. are filled in with duplicates of $3f00.)
+
+Example usage:
+```     
+        lda #$3f
+        sta $2006
+        lda #$00
+        sta $2006     ; set PPU write address to $3f00
+        ldx #0
+pal_loop:
+        lda PalData,x
+        sta $2007
+        inx 
+        cpx #32
+        bne pal_loop
+        
+PalData:
+        .incbin "output.pal"
+```
 
 Enjoy!
