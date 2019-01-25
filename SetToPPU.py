@@ -8,15 +8,29 @@
 # Outputs two files: OUTPUT.NAM (1kB namespace file)
 #    and OUTPUT.ATR (64-byte attribute file)
 #
+# version 1.1:
+#  Optional usage: $ python3 settoppu.py <inputfile>.set
+#   This usage will output <inputfile>.nam and <inputfile>.atr!
+#
 # Both of these files can be loaded directly into RAM
 # using your favorite NES assembler!
 #######################################################
 
+import sys 
+
+if len(sys.argv) == 2:
+    filenam_arg = sys.argv[1]
+
 bytes_read = [] 
 
-with open("input.set", "rb") as f:
-    bytes_read = f.read()
-f.close()
+if len(sys.argv) == 1:
+    with open("input.set", "rb") as f:
+        bytes_read = f.read()
+    f.close()
+elif len(sys.argv) == 2:
+    with open(filenam_arg, "rb") as f:
+        bytes_read = f.read()
+    f.close()
 
 output = bytearray()
 output2 = bytearray()
@@ -60,11 +74,20 @@ while v < 256:
         n +=2
     v += 32
 
-f = open("output.nam", "wb")
-f.write(output)
-f.close()
-
-f = open("output.atr", "wb")
-f.write(atr_out)
-f.close()
+if len(sys.argv) == 2:
+    f = open(filenam_arg[:-4]+'.nam', "wb")
+    f.write(output)
+    f.close()
+    f = open(filenam_arg[:-4]+'.atr', "wb")
+    f.write(atr_out)
+    f.close()
+    print(filenam_arg[:-4]+'.nam and '+filenam_arg[:-4]+'.atr written successfully.')
+else:
+    f = open("output.nam", "wb")
+    f.write(output)
+    f.close()
+    f = open("output.atr", "wb")
+    f.write(atr_out)
+    f.close()
+    print('output.nam and output.atr written successfully.')
  
