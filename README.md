@@ -26,7 +26,7 @@ If no .pal file is specified, a default palette will be made. Otherwise if outpu
 If a file is specified, it will either be created new or loaded (if it exists).
 
 Click the color you want, then click the palette number to assign it.
-When you're done, click the Save PAL file button, and 'output.pal' file will be created in the same folder in which you ran the pyton script. 
+When you're done, click the Save PAL file button, and a PAL file will be created in the same folder in which you ran the pyton script. 
 
 The color values are based on HTML hex values taken from this source:
 http://www.thealmightyguru.com/Games/Hacking/Wiki/index.php/NES_Palette
@@ -61,7 +61,7 @@ Enjoy!
 
 Usage:
 
-Save a .set file from yy-chr's BG SET editor. This file includes both namespace data and tile attribute data, but in an order that is unweildly for assembly use. This tool reorganizes the data into raw bytes that can be loaded directly into ROM.
+Save a .set file from yy-chr's BG SET editor. This file includes both namespace data and tile attribute data, but in an order that is unweildly for assembly use. This tool reorganizes the data into raw bytes that can be loaded directly into ROM. The order of the attribute file's palettes are taken as they are from the yy-chr editor. 
 
 $ python3 settoppu.py inputfile.set
 
