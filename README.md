@@ -7,7 +7,7 @@ A set of Python tools for NES Assembly
    64-byte .ATR (attribute)
 
 
-# NES Palette Pal - a .PAL generator for NES
+# NES Palette Pal 1.1 - a .PAL generator for NES
 ![alt text](https://github.com/bferguson3/NESPAL/blob/master/nespal.png)
 
  (c) 2018 Ben Ferguson
@@ -20,9 +20,10 @@ A set of Python tools for NES Assembly
 Usage is super easy.
 Uses only tkinter library, so it should work on any Python3 compatible system.
 
-$ python3 nespal.py
+$ python3 nespal.py inputfile.pal
 
-If 'output.pal' already exists in the script folder, it will be loaded automatically.
+If no .pal file is specified, a default palette will be made. Otherwise if output.pal exists, it will be loaded automatically.
+If a file is specified, it will either be created new or loaded (if it exists).
 
 Click the color you want, then click the palette number to assign it.
 When you're done, click the Save PAL file button, and 'output.pal' file will be created in the same folder in which you ran the pyton script. 
@@ -57,7 +58,7 @@ Enjoy!
 
 Usage:
 
-Save a .set file from yy-chr's BG SET editor. This file includes both namespace data and tile attribute data 
+Save a .set file from yy-chr's BG SET editor. This file includes both namespace data and tile attribute data, but in an order that is unweildly for assembly use. This tool reorganizes the data into raw bytes that can be loaded directly into ROM.
 
 $ python3 settoppu.py inputfile.set
 
