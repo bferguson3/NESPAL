@@ -24,6 +24,11 @@ nesPalette = [
 palObj = []
 
 import tkinter as tk 
+import sys 
+
+using_filename = False
+if len(sys.argv) == 2:
+    using_filename = True 
 
 currentColor = 0
 
@@ -253,15 +258,25 @@ def write_pal():
 
     output = bytearray(output_bytes)
     try:
-        f = open('output.pal', 'wb')
-        f.write(output)
-        f.close()
-        print("Saved current palette to 'output.pal'.")
+        if using_filename == False: 
+            f = open('output.pal', 'wb')
+            f.write(output)
+            f.close()
+            print("Saved current palette to 'output.pal'.")
+        else:
+            f = open(sys.argv[1], 'wb')
+            f.write(output) 
+            f.close() 
+            print("Saved palette to "+sys.argv[1])
     except Exception:
         print("Failed to write")
 
+fh = None
 try: 
-    fh = open('output.pal', 'rb')
+    if using_filename == False:
+        fh = open('output.pal', 'rb')
+    else:
+        fh = open(sys.argv[1], 'rb')
 except FileNotFoundError:
     print("File not found. Are you running nespal.py from the right folder?")
 
