@@ -212,7 +212,7 @@ while c < 3:
     sp_pal3[c].grid(row=4, column=c+5)
     sp_pal3[c].setVal(c+22)
     c += 1
-
+output = None 
 def write_pal():
     output_bytes=[]
     output_bytes.append(univ_bg.myVal)
@@ -270,6 +270,7 @@ def write_pal():
             print("Saved palette to "+sys.argv[1])
     except Exception:
         print("Failed to write")
+####
 
 fh = None
 try: 
@@ -278,10 +279,16 @@ try:
     else:
         fh = open(sys.argv[1], 'rb')
 except FileNotFoundError:
-    print("File not found. Are you running nespal.py from the right folder?")
+    if using_filename == True:
+        print("File not found. Creating new palette.")
+    else: 
+        print("Default output.pal file not found. Creating new palette.")
 
 if fh:
-    print("output.pal file found. Loading...")
+    if using_filename == True:
+        print('Loading '+sys.argv[1] + '...')
+    else: 
+        print('output.pal found. Loading...')
     inbytes = bytearray(fh.read())
     fh.close()
     univ_bg.myVal = inbytes[0]
@@ -306,7 +313,16 @@ if fh:
         sp_pal3[c].config(background=nesPalette[sp_pal3[c].myVal])
         c += 1
 else:
-    print("No output.pal file found. Creating temporary palette.")
+    if using_filename:
+        #f = open(sys.argv[1], 'wb')
+        #write_pal()
+       # f.write(0) 
+        #f.close() 
+        #print("Creating "+sys.argv[1])
+        pass 
+    else:
+        #print("No output.pal file found. Creating temporary palette.")
+        pass 
 
 
 save_btn = tk.Button(win, text='Save PAL file', command=write_pal)
