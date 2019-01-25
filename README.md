@@ -57,7 +57,7 @@ Enjoy!
 
 Usage:
 
-$ python3 settoppu.py <inputfile>.set
+$ python3 settoppu.py inputfile.set
 
 If found, it will output two files in the same directory: a 960-byte .nam namespace file, and a 64-byte .atr attribute file (normally loaded at the end of namespaces, e.g. @ $23c0).
 
