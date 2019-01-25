@@ -51,17 +51,17 @@ PalData:
 
 Enjoy!
 
-# SET to PPU - A yy-chr to assembly converter
+# SET to PPU v1.1 - A yy-chr to assembly converter
 
 (c) 2018 Ben Ferguson / Python3
 
-For now, this tool only works if an 'input.set' file is in the same folder as the .py file.
-
 Usage:
 
-$ python3 settoppu.py
+$ python3 settoppu.py <inputfile>.set
 
-If found, it will output two files in the same directory: 'output.nam', a 960-byte namespace file, and 'output.atr', a 64-byte attribute file (normally loaded at the end of namespaces, e.g. @ $23c0).
+If found, it will output two files in the same directory: a 960-byte .nam namespace file, and a 64-byte .atr attribute file (normally loaded at the end of namespaces, e.g. @ $23c0).
+
+If no .set filename is specified it will by default look for 'input.set'.
 
 Example usage:
 ```
