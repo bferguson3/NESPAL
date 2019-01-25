@@ -28,6 +28,9 @@ If a file is specified, it will either be created new or loaded (if it exists).
 Click the color you want, then click the palette number to assign it.
 When you're done, click the Save PAL file button, and 'output.pal' file will be created in the same folder in which you ran the pyton script. 
 
+The color values are based on HTML hex values taken from this source:
+http://www.thealmightyguru.com/Games/Hacking/Wiki/index.php/NES_Palette
+
 (The unused spaces in the PPU palette block stored in $3f04 etc. are filled in with duplicates of $3f00.)
 
 Example usage:
