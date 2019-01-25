@@ -5,6 +5,8 @@
 #
 # Use Python 3!
 # 
+# v1.1: Added support for cmd line filename argument
+#
 # Assembles a proper 32-byte palette file 
 # for use with NES-based 6502 compilers.
 # Easy point-and-click interface.
