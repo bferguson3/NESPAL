@@ -81,44 +81,26 @@ Example usage:
         lda MapData,x 
         sta $2007
         inx
-        cpx #255
         bne .FillLoop   
-        
         ldx #0
 .FillLoop2:
         lda MapData+256,x
         sta $2007 
         inx 
-        cpx #255 
         bne .FillLoop2
-
         ldx #0
 .FillLoop3:
-        lda MapData+512,x
+        lda MapData+(256*2),x
         sta $2007 
         inx 
-        cpx #255 
         bne .FillLoop3
-
         ldx #0
 .FillLoop4:
         lda MapData+(256*3),x 
         sta $2007 
         inx 
-        cpx #$c0
         bne .FillLoop4
-        
-        lda #$23
-        sta $2006
-        lda #$c0
-        sta $2006
-        ldx #0
-.color_bg_loop:
-        lda MapAttr,x
-        sta $2007
-        inx 
-        cpx #64
-        bcc .color_bg_loop
+    ; this assumes the .atr file is included immediately following the .nam file in ROM.
 ```
 Included with:
 ```
