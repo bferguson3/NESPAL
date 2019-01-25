@@ -26,7 +26,7 @@ If no .pal file is specified, a default palette will be made. Otherwise if outpu
 If a file is specified, it will either be created new or loaded (if it exists).
 
 Click the color you want, then click the palette number to assign it.
-When you're done, click the Save PAL file button, and 'output.pal' file will be created in the same folder in which you ran the pyton script. 
+When you're done, click the Save PAL file button, and a PAL file will be created in the same folder in which you ran the pyton script. 
 
 The color values are based on HTML hex values taken from this source:
 http://www.thealmightyguru.com/Games/Hacking/Wiki/index.php/NES_Palette
@@ -61,7 +61,7 @@ Enjoy!
 
 Usage:
 
-Save a .set file from yy-chr's BG SET editor. This file includes both namespace data and tile attribute data, but in an order that is unweildly for assembly use. This tool reorganizes the data into raw bytes that can be loaded directly into ROM.
+Save a .set file from yy-chr's BG SET editor. This file includes both namespace data and tile attribute data, but in an order that is unweildly for assembly use. This tool reorganizes the data into raw bytes that can be loaded directly into ROM. The order of the attribute file's palettes are taken as they are from the yy-chr editor. 
 
 $ python3 settoppu.py inputfile.set
 
@@ -81,44 +81,26 @@ Example usage:
         lda MapData,x 
         sta $2007
         inx
-        cpx #255
         bne .FillLoop   
-        
         ldx #0
 .FillLoop2:
         lda MapData+256,x
         sta $2007 
         inx 
-        cpx #255 
         bne .FillLoop2
-
         ldx #0
 .FillLoop3:
-        lda MapData+512,x
+        lda MapData+(256*2),x
         sta $2007 
         inx 
-        cpx #255 
         bne .FillLoop3
-
         ldx #0
 .FillLoop4:
         lda MapData+(256*3),x 
         sta $2007 
         inx 
-        cpx #$c0
         bne .FillLoop4
-        
-        lda #$23
-        sta $2006
-        lda #$c0
-        sta $2006
-        ldx #0
-.color_bg_loop:
-        lda MapAttr,x
-        sta $2007
-        inx 
-        cpx #64
-        bcc .color_bg_loop
+    ; this assumes the .atr file is included immediately following the .nam file in ROM.
 ```
 Included with:
 ```
